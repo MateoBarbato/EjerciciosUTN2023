@@ -10,7 +10,7 @@ def menu():
 
         if numero.isdigit():
             numero = int(numero)
-            if numero <= 18 and numero >= 0:
+            if numero <= 22 and numero >= 0:
                 break
             else:
                 flagMenu=False
@@ -38,19 +38,31 @@ def menu():
         case 9:
             superHeroeFem()
         case 10:
-            masAltoMasc()
+            masAltoMasc(False)
         case 11:
-            masAltoFem()
+            masAltoFem(False)
         case 12:
-            masBajoMasc()
+            masBajoMasc(False)
         case 13:
-            masBajoFem()
+            masBajoFem(False)
         case 14:
             promedioMasc()
         case 15:
             promedioFem()
         case 16:
             minMaxGeneros()
+        case 17:
+            cantColorDePelo()
+        case 18:
+            cantColorDeOjos()
+        case 19:
+            tipoDeInteligencia()
+        case 20:
+            agruparPorOjos()
+        case 21:
+            agruparPorPelo()
+        case 22:
+            agruparPorInteligencia()
         case 0:
             salir_del_programa()
         case _:

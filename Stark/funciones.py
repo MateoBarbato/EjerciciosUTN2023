@@ -18,8 +18,12 @@ listaOpciones= ['1)Imprimir por nombre',
                 '14)Promedio Altura (M)',
                 '15)Promedio Altura (F)',
                 '16)MinMax por Genero',
-                '17)SuperHereo mas y menos pesado',
-                '18)MinMax por Genero',
+                '17)Cantidad de color de pelo',
+                '18)Cantidad de color de ojos',
+                '19)Cantidad de color de inteligencia',
+                '20)Agrupar por ojos',
+                '21)Agrupar por pelo',
+                '22)Agrupar por inteligencia',
                 '0)Cerrar y salir']
 def imprimirLista():
     
@@ -239,6 +243,54 @@ def minMaxGeneros():
 
     print(f'El heroe mas alto (M): {altoMasc[1]} midiendo {altoMasc[0]} cm')
     print(f'El heroe mas alto (F): {altoFem[1]} midiendo {altoFem[0]} cm')
+
+def cantColorDePelo():
+    colorDePeloDict = {}
+    for personaje in lista_personajes:
+        
+        color_pelo = personaje["color_pelo"].lower()
+        
+        if color_pelo in colorDePeloDict :
+            colorDePeloDict[color_pelo] += 1
+        else:
+            colorDePeloDict[color_pelo] = 1
+    
+    for color in colorDePeloDict:
+        print(f"Cantidad de {color}: {colorDePeloDict.get(color)}")
+     
+def cantColorDeOjos():
+    colorDeOjosDict = {}
+    for personaje in lista_personajes:
+        color_ojos = personaje["color_ojos"].lower()
+        if color_ojos in colorDeOjosDict :
+            colorDeOjosDict[color_ojos] += 1
+        else:
+            colorDeOjosDict[color_ojos] = 1
+    
+    for color in colorDeOjosDict:
+        print(f"Cantidad de {color}: {colorDeOjosDict.get(color)}") 
+def tipoDeInteligencia():
+    tiposdeInt = {}
+    for personaje in lista_personajes:
+        tipodeInt = personaje["inteligencia"].lower()
+        if '' == tipodeInt:
+            tiposdeInt['No Tiene']= 1
+        else:
+            if tipodeInt in tiposdeInt :
+                tiposdeInt[tipodeInt] += 1
+            else:
+                tiposdeInt[tipodeInt] = 1
+    
+    for intel in tiposdeInt:
+        print(f"Cantidad de {intel}: {tiposdeInt.get(intel)}") 
+    
+
+def agruparPorOjos():
+    pass
+def agruparPorPelo():
+    pass
+def agruparPorInteligencia():
+   pass
 
 def limpiarConsola():
     import os
