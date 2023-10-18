@@ -2,29 +2,29 @@ import os
 from data_stark import lista_personajes
 
 
-listaOpciones= ['1)Imprimir por nombre',
-                '2)Imprimir por nombre y altura',
-                '3)Superheroe mas alto',
-                '4)Superheroe mas bajo',
-                '5)Altura promedio',
-                '6)Nombre del superheroe Max y Min',
-                '7)SuperHereo mas y menos pesado',
-                '8)Heroes (M)',
-                '9)Heroes (F)',
-                '10)SuperHereo mas alto (M)',
-                '11)SuperHereo mas alto (F)',
-                '12)SuperHereo mas bajo (M)',
-                '13)SuperHereo mas bajo (F)',
-                '14)Promedio Altura (M)',
-                '15)Promedio Altura (F)',
-                '16)MinMax por Genero',
-                '17)Cantidad de color de pelo',
-                '18)Cantidad de color de ojos',
-                '19)Cantidad de color de inteligencia',
-                '20)Agrupar por ojos',
-                '21)Agrupar por pelo',
-                '22)Agrupar por inteligencia',
-                '0)Cerrar y salir']
+listaOpciones= ['1) Imprimir por nombre',
+                '2) Imprimir por nombre y altura',
+                '3) Superheroe mas alto',
+                '4) Superheroe mas bajo',
+                '5) Altura promedio',
+                '6) Nombre del superheroe Max y Min',
+                '7) SuperHereo mas y menos pesado',
+                '8) Heroes (M)',
+                '9) Heroes (F)',
+                '10) SuperHereo mas alto (M)',
+                '11) SuperHereo mas alto (F)',
+                '12) SuperHereo mas bajo (M)',
+                '13) SuperHereo mas bajo (F)',
+                '14) Promedio Altura (M)',
+                '15) Promedio Altura (F)',
+                '16) MinMax por Genero',
+                '17) Cantidad de color de pelo',
+                '18) Cantidad de color de ojos',
+                '19) Cantidad de color de inteligencia',
+                '20) Agrupar por ojos',
+                '21) Agrupar por pelo',
+                '22) Agrupar por inteligencia',
+                '0) Cerrar y salir']
 def imprimirLista():
     
     """
@@ -32,7 +32,8 @@ def imprimirLista():
     """
     print("<============ Menu de funciones ===========>")
     for opcion in listaOpciones:
-        print(f'{opcion}')
+        print(f'===   {opcion}')
+    print("<==========================================>")
 
 def nombresSuperheroe():
     limpiarConsola()
@@ -80,9 +81,9 @@ def heroeMasBajo(returning):
         return [minimo, minimoNombre]
 
 def minMax():
-    limpiarConsola()
     masBajo = heroeMasBajo(True)
     masAlto = heroeMasAlto(True)
+    limpiarConsola()
     print(f'El heroe mas bajo: {masBajo[1]} midiendo {masBajo[0]} cm')
     print(f'El heroe mas alto: {masAlto[1]} midiendo {masAlto[0]} cm')
 
@@ -286,11 +287,61 @@ def tipoDeInteligencia():
     
 
 def agruparPorOjos():
-    pass
+    tiposDeOjosDic = {}
+    for personaje in lista_personajes:
+        tipodeOjo = personaje['color_ojos'].lower()
+        if tipodeOjo in tiposDeOjosDic :
+            tiposDeOjosDic[tipodeOjo].append(personaje['nombre'])
+        else:
+            tiposDeOjosDic[tipodeOjo] = []
+            tiposDeOjosDic[tipodeOjo].append(personaje['nombre'])
+
+    for tipo in tiposDeOjosDic:
+        print(f'Personajes de ojos de color {tipo}')
+        if tiposDeOjosDic.get(tipo) == []:
+            print(f'--No existen')
+        for personaje in tiposDeOjosDic.get(tipo):
+            print(f'--{personaje}')
 def agruparPorPelo():
-    pass
+    TiposDePeloDict = {}
+    for personaje in lista_personajes:
+        
+        color_pelo = personaje["color_pelo"].lower()
+        
+        if color_pelo in TiposDePeloDict :
+            TiposDePeloDict[color_pelo].append(personaje['nombre'])
+        else:
+            TiposDePeloDict[color_pelo] = []
+            TiposDePeloDict[color_pelo].append(personaje['nombre'])
+    
+    for tipo in TiposDePeloDict:
+        print(f'Personajes con el pelo {tipo}')
+        if TiposDePeloDict.get(tipo) == []:
+            print(f'--No existen')
+        for personaje in TiposDePeloDict.get(tipo):
+            print(f'--{personaje}')
 def agruparPorInteligencia():
-   pass
+    TiposDeInteligenciaDic = {}
+    for personaje in lista_personajes:
+        
+        inteligencia = personaje["inteligencia"].lower()
+        
+        if inteligencia in TiposDeInteligenciaDic :
+            TiposDeInteligenciaDic[inteligencia].append(personaje['nombre'])
+        else:
+            if inteligencia == '':
+                TiposDeInteligenciaDic['None'] = []
+                TiposDeInteligenciaDic['None'].append(personaje['nombre'])
+            else:
+                TiposDeInteligenciaDic[inteligencia] = []
+                TiposDeInteligenciaDic[inteligencia].append(personaje['nombre'])
+    
+    for tipo in TiposDeInteligenciaDic:
+        print(f'Nivel de inteligencia {tipo}')
+        if TiposDeInteligenciaDic.get(tipo) == []:
+            print(f'--No existen')
+        for personaje in TiposDeInteligenciaDic.get(tipo):
+            print(f'--{personaje}')
 
 def limpiarConsola():
     import os

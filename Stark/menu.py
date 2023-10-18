@@ -24,7 +24,7 @@ def menu():
         case 2:
             nombreyAltura()
         case 3:
-            heroeMasAlto()
+            heroeMasAlto(False)
         case 4:
             heroeMasBajo(False)
         case 5:
